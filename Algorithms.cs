@@ -63,7 +63,8 @@ public static class Algorithms
         
         for (int maxWordCount = 1;; maxWordCount++)
         {
-            Console.WriteLine($"\nLooking for {maxWordCount}-word combinations...");
+            Console.Write($"\nLooking for {maxWordCount}-word combinations... ");
+            bool found = false;
             foreach (char letter in board.Letters)
             {
                 List<WordSequence> newList = new(); 
@@ -75,7 +76,9 @@ public static class Algorithms
                         sequence.Add(prevSequence);
                         if (sequence.Code == board.BoardCode)
                         {
-                            Console.Write(sequence);
+                            if (!found) Console.Write("Found!\n");
+                            found = true;
+                            Console.Write($"    {sequence}");
                             Console.ReadLine();
                         }
                         newList.Add(sequence);
@@ -90,6 +93,7 @@ public static class Algorithms
             {
                 newSeq[letter].Clear();
             }
+            if (!found) Console.Write("Not found.");
         }
     }
 }

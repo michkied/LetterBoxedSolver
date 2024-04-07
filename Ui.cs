@@ -8,6 +8,9 @@ public static class Ui
     {
         Console.WriteLine("Welcome to LetterBoxedSolver!\n");
         var (sides, lettersPerSide) = GatherBoardDimensions();
+        Console.WriteLine("\nPlease provide the letter configuration on the board.\n" +
+                          "The order of letters on a single side does not matter, neither does the order of\n" +
+                          "the sides. However, it is important not to mix the letters between the sides.");
         return CreateBoard(sides, lettersPerSide);
     }
 
@@ -29,9 +32,9 @@ public static class Ui
                 }
                 char letter = response.ToUpper()[0];
                 
-                if (!Config.AlphabetString.Contains(letter))
+                if (!Config.AlphabetString.Contains(letter) || response.Length > 1)
                 {
-                    Console.WriteLine("    This character is not a valid letter!");
+                    Console.WriteLine("    Not a valid letter!");
                     j--;
                     continue;
                 }

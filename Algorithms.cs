@@ -84,7 +84,6 @@ public static class Algorithms
                         newList.Add(sequence);
                     }
                 }
-                newList.Sort();
                 newSeq[letter] = newList;
             }
             
